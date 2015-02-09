@@ -8,7 +8,7 @@ Installation
 ----
 1. Install package from github::
 
-    pip install -e git+https://github.com/sorokins/django-calendar-tags.git#egg=django-calendar-tags==0.1.6
+    pip install -e git+https://github.com/sorokins/django-calendar-tags.git#egg=django-calendar-tags==1.0
 
 
 2. Add 'calendartags' to INSTALLED_APPS in settings.py
