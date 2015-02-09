@@ -1,0 +1,4 @@
+<form action="{% url 'calendartags_icalendar' %}" method="post" class="js-calendartags-form">
+    {% csrf_token %}
+    {{ form }}
+</form>
