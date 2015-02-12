@@ -12,3 +12,6 @@ Installation
 
 
 2. Add 'calendartags' to INSTALLED_APPS in settings.py
+
+
+Inspired by https://github.com/carlsednaoui/add-to-calendar-buttons/blob/master/ouical.js
