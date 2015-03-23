@@ -1,3 +1,4 @@
+from datetime import datetime
 import urllib
 
 from django import template
@@ -12,13 +13,18 @@ register = template.Library()
 
 @register.simple_tag
 def google_calendar(title, start_time='', end_time='', description='', address=''):
-    params = urllib.urlencode({
+    params = {
         'action': 'TEMPLATE',
         'text': title.encode('utf-8'),
-        'dates': '%s/%s' % (format_datetime(start_time), format_datetime(end_time)),
-        'details': description.encode('utf-8'),
-        'location': address.encode('utf-8'),
-    })
+        'details': description.encode('utf-8') if description is not None else '',
+        'location': address.encode('utf-8') if address is not None else '',
+    }
+    if isinstance(start_time, datetime) and isinstance(end_time, datetime):
+        params.update({
+            'dates': '%s/%s' % (format_datetime(start_time), format_datetime(end_time)),
+
+        })
+    params = urllib.urlencode(params)
     url = 'https://www.google.com/calendar/render?sprop=&sprop=name:&%s' % params
 
     return url
